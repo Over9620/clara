@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with Clara AI</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .chat-container { width: 300px; margin: 0 auto; border: 1px solid #ccc; padding: 10px; }
+        .messages { height: 400px; overflow-y: scroll; border: 1px solid #ccc; margin-bottom: 10px; }
+        .user-input { width: 100%; padding: 10px; }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="messages" id="messages">
+            <p>Chat with Clara AI</p>
+        </div>
+        <input type="text" class="user-input" id="userInput" placeholder="Type your message..." />
+        <button id="sendButton">Send</button>
+    </div>
+    <script>
+        const sendButton = document.getElementById('sendButton');
+        const userInput = document.getElementById('userInput');
+        const messages = document.getElementById('messages');
+
+        sendButton.addEventListener('click', function() {
+            const userMessage = userInput.value;
+            messages.innerHTML += `<p>You: ${userMessage}</p>`;
+            userInput.value = ''; // Clear input field
+            // Here you would typically send the message to Clara AI and receive a response.
+            // For this example, we'll just echo the message.
+            messages.innerHTML += `<p>Clara AI: ${userMessage}</p>`;
+            messages.scrollTop = messages.scrollHeight; // Auto scroll to the bottom
+        });
+    </script>
+</body>
+</html>
