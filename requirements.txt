@@ -3,3 +3,10 @@ Flask-Cors
 Flask-SQLAlchemy
 Flask-Migrate
 Flask-Login
+speech_recognition
+requests
+piper-tts
+sounddevice
+numpy
+librosa
+gunicorn
