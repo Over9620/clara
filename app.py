@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from clara_ai import aria_brain
+from clara import command_listener
 
 app = Flask(__name__)
 
