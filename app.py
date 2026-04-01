@@ -1,17 +1,17 @@
 from flask import Flask, request, jsonify
-from clara import command_listener
+from clara_web import handle_clara_request
 
 app = Flask(__name__)
 
-@app.route('/')
-def home():
-    return "Welcome to Clara AI!"
 
-@app.route('/chat', methods=['POST'])
-def chat_endpoint():
-    user_input = request.json.get('message')
-    response = aria_brain(user_input)
-    return jsonify({'response': response})
+@app.post("/clara")
+def clara_endpoint():
+    data = request.get_json(silent=True) or {}
+    message = data.get("message", "")
+    reply = handle_clara_request(message)
+    return jsonify({"response": reply})
 
-if __name__ == '__main__':
-    app.run(port=5000)
+
+@app.get("/")
+def health():
+    return jsonify({"status": "ok", "service": "clara-web"})
